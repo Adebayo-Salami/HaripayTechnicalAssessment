@@ -31,7 +31,7 @@ namespace HaripayTechnicalAssessmentServices
             {
                 if (String.IsNullOrWhiteSpace(type))
                 {
-                    throw new Exception("Type Is Required");
+                    throw new ArgumentException("Type Is Required");
                 }
 
                 if (!Enum.IsDefined(typeof(DiscountType), discountType))
@@ -44,14 +44,14 @@ namespace HaripayTechnicalAssessmentServices
                 {
                     if (value < 0 || value > 100)
                     {
-                        throw new InvalidOperationException("Percentage must be between 1 to 100");
+                        throw new ArgumentException("Percentage must be between 1 to 100");
                     }
                 }
                 else
                 {
                     if(value < 100)
                     {
-                        throw new Exception("Minimum amount that can be set is 100.");
+                        throw new ArgumentException("Minimum amount that can be set is 100.");
                     }
                 }
 
@@ -104,18 +104,18 @@ namespace HaripayTechnicalAssessmentServices
             {
                 if (billAmount <= 0)
                 {
-                    throw new Exception("Invalid Bill Amount Passed");
+                    throw new InvalidOperationException("Invalid Bill Amount Passed");
                 }
 
                 if (customerId <= 0)
                 {
-                    throw new Exception("Invalid Customer ID");
+                    throw new InvalidOperationException("Invalid Customer ID");
                 }
 
                 Customer customer = _context.Customers.FirstOrDefault(x => x.Id == customerId);
                 if (customer == null)
                 {
-                    throw new Exception("No customer with this ID exists.");
+                    throw new InvalidOperationException("No customer with this ID exists.");
                 }
 
                 bool isApplyingSpecificDiscount = false;
@@ -125,19 +125,18 @@ namespace HaripayTechnicalAssessmentServices
                     Discount discount = _context.Discounts.FirstOrDefault(x => x.Id == discountId);
                     if (discount == null)
                     {
-                        throw new Exception("Invalid Discount Applied");
+                        throw new InvalidOperationException("Invalid Discount Applied");
                     }
 
                     if (discount.Status == DiscountStatus.Inactive)
                     {
-                        throw new Exception("Discount is Inactive");
+                        throw new InvalidOperationException("Discount is Inactive");
                     }
 
                     isApplyingSpecificDiscount = true;
                     specificDiscountToApply = discount;
                 }
 
-                decimal discountToApply = 0;
                 decimal percentageDiscountToApply = 0;
                 decimal variableDiscountToApply = 0;
 
