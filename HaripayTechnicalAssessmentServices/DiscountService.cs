@@ -130,17 +130,36 @@ namespace HaripayTechnicalAssessmentServices
                 }
 
                 decimal discountToApply = 0;
+                decimal percentageDiscountToApply = 0;
+                decimal variableDiscountToApply = 0;
+
+                //Set Percentage Discount
                 if (isApplyingSpecificDiscount)
                 {
-                    discountToApply = isGrocery && specificDiscountToApply.DiscountType == DiscountType.Percentage ? 0 : specificDiscountToApply.Value;
+                    if(specificDiscountToApply.DiscountType == DiscountType.Percentage)
+                    {
+                        percentageDiscountToApply = specificDiscountToApply.Value;
+                    }
                 }
                 else
                 {
-                    discountToApply =  (customer.CustomerType == CustomerType.Affiliate) ? 10 : (customer.CustomerType == CustomerType.Employee) ? 30 : ((DateTime.Now - customer.DateCreated).TotalDays >= 730) ? 5 : 0;
+                    percentageDiscountToApply = (customer.CustomerType == CustomerType.Affiliate) ? 10 : (customer.CustomerType == CustomerType.Employee) ? 30 : ((DateTime.Now - customer.DateCreated).TotalDays >= 730) ? 5 : 0;
                 }
 
-                decimal discountAmount = !isApplyingSpecificDiscount ? (discountToApply / 100) * billAmount : specificDiscountToApply.DiscountType == DiscountType.Percentage ? (specificDiscountToApply.Value / 100) * billAmount : specificDiscountToApply.Value;
-                totalInvoiceAmount = billAmount - discountAmount;
+                //Set Variable Discounts
+                if (isApplyingSpecificDiscount)
+                {
+                    if(specificDiscountToApply.DiscountType == DiscountType.Fixed)
+                    {
+                        variableDiscountToApply = specificDiscountToApply.Value;
+                    }
+                }
+
+                decimal calculate100billDiscount = Math.Floor(billAmount / 100);
+                variableDiscountToApply = variableDiscountToApply + (calculate100billDiscount * 5);
+
+                decimal percentageDiscountAmount = (percentageDiscountToApply / 100) * billAmount;
+                totalInvoiceAmount = billAmount - (percentageDiscountAmount + variableDiscountToApply);
             }
             catch (Exception err)
             {

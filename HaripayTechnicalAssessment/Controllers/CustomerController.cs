@@ -22,15 +22,15 @@ namespace HaripayTechnicalAssessment.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            Models.Response response = new Models.Response();
-            response.ResponseCode = "00";
-            response.ResponseMessage = "Api Is Up";
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    Models.Response response = new Models.Response();
+        //    response.ResponseCode = "00";
+        //    response.ResponseMessage = "Customer Api Is Up";
 
-            return Ok(new JsonResult(response));
-        }
+        //    return Ok(new JsonResult(response));
+        //}
 
         //GET: api/customer
         [HttpGet]
