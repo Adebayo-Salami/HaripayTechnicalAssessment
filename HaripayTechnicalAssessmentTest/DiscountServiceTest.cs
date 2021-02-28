@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using Xunit;
 
 namespace HaripayTechnicalAssessmentTest
 {
-    public class UnitTest1
+    public class DiscountServiceTest
     {
         [Fact]
         public void Test1()
