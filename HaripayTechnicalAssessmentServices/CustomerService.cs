@@ -31,12 +31,12 @@ namespace HaripayTechnicalAssessmentServices
             {
                 if (String.IsNullOrWhiteSpace(fullname))
                 {
-                    throw new Exception("Full Name Is Required");
+                    throw new ArgumentException("Full Name Is Required");
                 }
 
                 if (customerType <= 0)
                 {
-                    throw new Exception("Customer type is required when creating a customer");
+                    throw new ArgumentException("Customer type is required when creating a customer");
                 }
 
                 CustomerType customerTypeCast = (CustomerType)customerType;
