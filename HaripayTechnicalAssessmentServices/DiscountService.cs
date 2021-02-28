@@ -36,7 +36,7 @@ namespace HaripayTechnicalAssessmentServices
 
                 if (!Enum.IsDefined(typeof(DiscountType), discountType))
                 {
-                    throw new InvalidCastException("Invalid Discount Type");
+                    throw new InvalidCastException("Invalid Discount Type (1 - Percentage, 2 - Fixed)");
                 }
                 DiscountType discountTypeSelected = (DiscountType)discountType;
 
@@ -57,7 +57,7 @@ namespace HaripayTechnicalAssessmentServices
 
                 if (!Enum.IsDefined(typeof(DiscountStatus), status))
                 {
-                    throw new InvalidCastException("Invalid Discount Status");
+                    throw new InvalidCastException("Invalid Discount Status (1 - Active, 2 - Inactive)");
                 }
                 DiscountStatus discountStatus = (DiscountStatus)status;
 

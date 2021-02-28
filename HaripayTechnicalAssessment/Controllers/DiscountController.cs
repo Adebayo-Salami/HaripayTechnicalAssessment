@@ -106,5 +106,28 @@ namespace HaripayTechnicalAssessment.Controllers
             return Ok(new JsonResult(response));
         }
 
+        //POST: api/discount
+        [HttpPost("GetInvoiceAmount")]
+        public IActionResult GetInvoiceAmount([FromBody] GetInvoiceViewModel getInvoice)
+        {
+            Models.Response response = new Models.Response();
+
+            try
+            {
+                decimal totalInvoiceAmount = _discountService.GetTotalInvoiceAmount(getInvoice.CustomerID, getInvoice.BillAmount, getInvoice.IsGrocery, (getInvoice.DiscountID == null) ? 0 : getInvoice.DiscountID.Value);
+
+                response.ResponseCode = "00";
+                response.ResponseMessage = "Discount created successfully.";
+                response.ResponseObject = totalInvoiceAmount;
+            }
+            catch (Exception error)
+            {
+                response.ResponseCode = "-01";
+                response.ResponseMessage = error.Message;
+            }
+
+            return Ok(new JsonResult(response));
+        }
+
     }
 }

@@ -41,7 +41,7 @@ namespace HaripayTechnicalAssessmentServices
 
                 if (!Enum.IsDefined(typeof(CustomerType), customerType))
                 {
-                    throw new InvalidCastException("Invalid Customer Type");
+                    throw new InvalidCastException("Invalid Customer Type (1 - Normal, 2 - Employee, 3 - Affiliate)");
                 }
 
                 CustomerType customerTypeCast = (CustomerType)customerType;
