@@ -8,8 +8,9 @@ namespace HaripayTechnicalAssessmentData.Model
     {
         public int Id { get; set; }
         public string Type { get; set; }
-        public decimal PercentageValue { get; set; }
+        public decimal Value { get; set; }
         public DateTime DateCreated { get; set; }
         public DiscountStatus Status { get; set; }
+        public DiscountType DiscountType { get; set; }
     }
 }

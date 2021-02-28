@@ -9,6 +9,6 @@ namespace HaripayTechnicalAssessmentData.Model
         public int Id { get; set; }
         public string Fullname { get; set; }
         public CustomerType CustomerType { get; set; }
-        public string DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

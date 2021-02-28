@@ -15,4 +15,9 @@ namespace HaripayTechnicalAssessmentData.Model
         Active = 1,
         Inactive
     }
+    public enum DiscountType
+    {
+        Percentage = 1,
+        Fixed
+    }
 }
