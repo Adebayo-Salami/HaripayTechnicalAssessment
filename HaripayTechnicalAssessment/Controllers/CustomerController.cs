@@ -56,7 +56,7 @@ namespace HaripayTechnicalAssessment.Controllers
 
         //POST: api/customer
         [HttpPost]
-        public IActionResult AddStudent([FromBody] CreateCustomerViewModel customer)
+        public IActionResult CreateCustomer([FromBody] CreateCustomerViewModel customer)
         {
             Models.Response response = new Models.Response();
 

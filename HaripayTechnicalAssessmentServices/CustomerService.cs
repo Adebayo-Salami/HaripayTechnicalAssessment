@@ -39,6 +39,11 @@ namespace HaripayTechnicalAssessmentServices
                     throw new ArgumentException("Customer type is required when creating a customer");
                 }
 
+                if (!Enum.IsDefined(typeof(CustomerType), customerType))
+                {
+                    throw new InvalidCastException("Invalid Customer Type");
+                }
+
                 CustomerType customerTypeCast = (CustomerType)customerType;
 
                 customer = new Customer()
