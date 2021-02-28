@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HaripayTechnicalAssessment.ViewModel;
 
 namespace HaripayTechnicalAssessment.Controllers
 {
@@ -22,15 +23,15 @@ namespace HaripayTechnicalAssessment.Controllers
             _discountService = discountService;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            Models.Response response = new Models.Response();
-            response.ResponseCode = "00";
-            response.ResponseMessage = "Discount Api Is Up";
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    Models.Response response = new Models.Response();
+        //    response.ResponseCode = "00";
+        //    response.ResponseMessage = "Discount Api Is Up";
 
-            return Ok(new JsonResult(response));
-        }
+        //    return Ok(new JsonResult(response));
+        //}
 
         //GET: api/discount
         [HttpGet]
@@ -81,5 +82,29 @@ namespace HaripayTechnicalAssessment.Controllers
 
             return Ok(new JsonResult(response));
         }
+
+        //POST: api/discount
+        [HttpPost]
+        public IActionResult AddDiscount([FromBody] CreateDiscountViewModel discount)
+        {
+            Models.Response response = new Models.Response();
+
+            try
+            {
+                Discount discountCreated = _discountService.CreateDiscount(discount.Type, discount.Value, discount.DicountType, discount.Status ? 1 : 2);
+
+                response.ResponseCode = "00";
+                response.ResponseMessage = "Discount created successfully.";
+                response.ResponseObject = discountCreated;
+            }
+            catch (Exception error)
+            {
+                response.ResponseCode = "-01";
+                response.ResponseMessage = error.Message;
+            }
+
+            return Ok(new JsonResult(response));
+        }
+
     }
 }
