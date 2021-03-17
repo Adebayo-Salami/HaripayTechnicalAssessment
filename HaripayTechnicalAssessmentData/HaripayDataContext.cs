@@ -9,5 +9,7 @@ namespace HaripayTechnicalAssessmentData
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }

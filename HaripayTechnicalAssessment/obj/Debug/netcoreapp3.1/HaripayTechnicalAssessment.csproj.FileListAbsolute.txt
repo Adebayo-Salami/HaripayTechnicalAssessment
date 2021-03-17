@@ -66,3 +66,6 @@ C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\Har
 C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\obj\Debug\netcoreapp3.1\HaripayTechnicalAssessment.dll
 C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\obj\Debug\netcoreapp3.1\HaripayTechnicalAssessment.pdb
 C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\obj\Debug\netcoreapp3.1\HaripayTechnicalAssessment.genruntimeconfig.cache
+C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\personal\OneDrive\Documents\Applications\HaripayTechnicalAssessment\HaripayTechnicalAssessment\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
